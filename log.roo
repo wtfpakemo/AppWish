@@ -1,0 +1,37 @@
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-17 14:54:28
+project --topLevelPackage com.appwish --projectName AppWish --java 7 --packaging WAR
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-17 14:54:36
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-17 14:55:39
+mongo setup --databaseName AppWishDev --host localhost --port 27017
+entity mongo --class com.appwish.domain.Idea --identifierType java.math.BigInteger --testAutomatically 
+entity mongo --class com.appwish.domain.Comment --identifierType java.math.BigInteger --testAutomatically 
+entity mongo --class com.appwish.domain.UserAccount --identifierType java.math.BigInteger --testAutomatically 
+entity mongo --class com.appwish.domain.Like --identifierType java.math.BigInteger --testAutomatically 
+focus --class ~.domain.UserAccount
+field string --fieldName name
+field string --fieldName email
+focus --class ~.domain.Comment
+field reference --fieldName userAccount --type ~.domain.UserAccount
+field string --fieldName body
+field string --fieldName dateCreated
+focus --class ~.domain.Like
+field reference --fieldName userAccount --type ~.domain.UserAccount
+focus --class ~.domain.Idea
+field string --fieldName body
+field string --fieldName dateCreated
+focus --class ~.domain.UserAccount
+field string --fieldName dateReg
+focus --class ~.domain.Idea
+field set --fieldName comments --type ~.domain.Comment
+field set --fieldName likes --type ~.domain.Like
+field reference --fieldName userAccount --type ~.domain.UserAccount
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-17 15:14:25
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-17 15:44:19
+repository mongo --interface com.appwish.repository.IdeaRepository --entity ~.domain.Idea
+repository mongo --interface com.appwish.repository.CommentRepository --entity ~.domain.Comment
+repository mongo --interface com.appwish.repository.LikeRepository --entity ~.domain.Like
+repository mongo --interface com.appwish.repository.UserAccountRepository --entity ~.domain.UserAccount
+json all --deepSerialize true
+web mvc json setup
+web mvc json all --package com.appwish.web
+test integration --entity ~.domain.Idea
