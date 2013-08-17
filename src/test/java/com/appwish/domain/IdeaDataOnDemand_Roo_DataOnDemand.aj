@@ -36,6 +36,7 @@ privileged aspect IdeaDataOnDemand_Roo_DataOnDemand {
         Idea obj = new Idea();
         setBody(obj, index);
         setDateCreated(obj, index);
+        setTitle(obj, index);
         return obj;
     }
     
@@ -47,6 +48,11 @@ privileged aspect IdeaDataOnDemand_Roo_DataOnDemand {
     public void IdeaDataOnDemand.setDateCreated(Idea obj, int index) {
         String dateCreated = "dateCreated_" + index;
         obj.setDateCreated(dateCreated);
+    }
+    
+    public void IdeaDataOnDemand.setTitle(Idea obj, int index) {
+        String title = "title_" + index;
+        obj.setTitle(title);
     }
     
     public Idea IdeaDataOnDemand.getSpecificIdea(int index) {

@@ -35,3 +35,4 @@ json all --deepSerialize true
 web mvc json setup
 web mvc json all --package com.appwish.web
 test integration --entity ~.domain.Idea
+field string --fieldName title

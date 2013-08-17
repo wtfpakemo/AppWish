@@ -51,4 +51,12 @@ privileged aspect Idea_Roo_JavaBean {
         this.userAccount = userAccount;
     }
     
+    public String Idea.getTitle() {
+        return this.title;
+    }
+    
+    public void Idea.setTitle(String title) {
+        this.title = title;
+    }
+    
 }
