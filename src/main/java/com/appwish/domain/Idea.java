@@ -55,4 +55,8 @@ public class Idea {
     public void addLikes(Like like) {
         this.likes.add(like);
     }
+
+    /**
+     */
+    private String title;
 }

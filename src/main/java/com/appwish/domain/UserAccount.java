@@ -2,6 +2,7 @@ package com.appwish.domain;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.layers.repository.mongo.RooMongoEntity;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -31,4 +32,6 @@ public class UserAccount {
         Date cDate = new Date();
         this.dateReg = dateFormat.format(cDate).toString();
     }
+
+
 }

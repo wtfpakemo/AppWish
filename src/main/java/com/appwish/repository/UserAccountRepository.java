@@ -7,4 +7,5 @@ import org.springframework.roo.addon.layers.repository.mongo.RooMongoRepository;
 public interface UserAccountRepository {
 
     List<UserAccount> findAll();
+    List<UserAccount> findByEmail(String email);
 }

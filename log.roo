@@ -35,5 +35,4 @@ json all --deepSerialize true
 web mvc json setup
 web mvc json all --package com.appwish.web
 test integration --entity ~.domain.Idea
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-17 17:26:58
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-17 17:49:54
+field string --fieldName title
