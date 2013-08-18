@@ -41,6 +41,7 @@ public class IdeaController {
 			idea.setBody("Some awesome description");
 			idea.setUserAccount(user1);
 			idea.addComment(comment);
+			idea.setCurrentDate();
 			if (i == 7){
 				idea.addComment(comment1);
 			}
