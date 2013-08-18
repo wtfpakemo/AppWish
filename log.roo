@@ -36,3 +36,15 @@ web mvc json setup
 web mvc json all --package com.appwish.web
 test integration --entity ~.domain.Idea
 field string --fieldName title
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-18 10:10:59
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-18 10:21:25
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-18 10:22:38
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-18 10:22:52
+focus --class ~.domain.Idea
+entity mongo --class ~.domain.Feature --identifierType java.math.BigInteger --testAutomatically 
+field string --fieldName name
+field number --fieldName requestCount --type java.lang.Integer
+field string --fieldName message
+repository mongo --interface com.appwish.repository.FeatureRepository --entity ~.domain.Feature
+json all --deepSerialize true
+web mvc json all --package com.appwish.web

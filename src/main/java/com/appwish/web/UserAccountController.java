@@ -20,7 +20,6 @@ public class UserAccountController {
 		else{
 			return 1;
 		}
-		
+
 	}
-	
 }
