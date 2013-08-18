@@ -6,6 +6,7 @@ import com.appwish.domain.UserAccount;
 
 import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -46,11 +47,24 @@ public class IdeaController {
 			idea.addLikes(like1);
 			
 			this.ideaRepository.save(idea);
+	
 		}
 		
 		
 		
 	}
 	
+	@RequestMapping(value="getuserideas", method=RequestMethod.GET)
+	public void getUserIdeas(@ModelAttribute UserAccount userAccount){
+		this.ideaRepository.findByUserAccount(userAccount);
+		
+	}
+	
+	@RequestMapping(value="getlikedideas", method=RequestMethod.GET)
+	public void getLikedIdeas(UserAccount userAccount){
+		Like like = new Like();
+		like.setUserAccount(userAccount);
+		this.ideaRepository.findByLikes(like);
+	}
 	
 }

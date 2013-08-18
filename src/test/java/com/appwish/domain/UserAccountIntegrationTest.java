@@ -1,4 +1,5 @@
 package com.appwish.domain;
+import org.junit.After;
 import org.junit.Test;
 import org.springframework.roo.addon.test.RooIntegrationTest;
 import org.springframework.util.Assert;
@@ -13,15 +14,19 @@ public class UserAccountIntegrationTest {
     }
     
     @Test
-    public void testGetUserIdeas() {
-    	UserAccount user = createUser();
+    public void getValidation(){
+    	UserAccount user = new UserAccount();
+    	user.setName("test user");
+    	user.setEmail("usertest@test.com");
     	
-    	//Assert.isTrue(user.getIdeas(),"" );
+    	this.userAccountRepository.save(user);
+    	System.out.println(this.userAccountRepository.findByEmail(user.getEmail()));
+    	
     }
-
-	private UserAccount createUser() {
-		
-		return null;
-	}
+    
+    @After
+    public void tearDown() throws Exception {
+    	this.userAccountRepository.deleteAll();
+    }
     
 }

@@ -1,6 +1,6 @@
 package com.appwish.domain;
-import org.junit.After;
 
+import org.junit.After;
 import org.junit.Test;
 import org.springframework.roo.addon.test.RooIntegrationTest;
 import org.springframework.util.Assert;
@@ -27,18 +27,18 @@ public class IdeaIntegrationTest {
     	this.ideaRepository.save(newIdea);
     	this.ideaRepository.save(newIdea1);
     	
-    	Idea mockIdea = mockIdea();
+    	Idea mockIdea = mockIdea(1);
     	
     	this.ideaRepository.save(mockIdea);
 
-    	System.out.println(this.ideaRepository.findByUserAccount(mockIdea.getUserAccount()));
+    	//System.out.println(this.ideaRepository.findByUserAccount(mockIdea.getUserAccount()));
 	
     }
     
     @Test
     public void testCommentCount(){
 
-    	Idea idea = mockIdea();
+    	Idea idea = mockIdea(1);
     	
     	int count = idea.getComments().size();
     	int x = 2;
@@ -50,7 +50,7 @@ public class IdeaIntegrationTest {
     @Test
     public void testLikeCount(){
     	
-    	Idea idea = mockIdea();
+    	Idea idea = mockIdea(1);
     	
     	int count = idea.getLikes().size();
     	int x = 2;
@@ -58,7 +58,7 @@ public class IdeaIntegrationTest {
     	Assert.isTrue(count != x, "Likes is more than " + x);
     }
     
-    public Idea mockIdea(){
+    public Idea mockIdea(int i){
     
     	Idea idea = new Idea();
     	UserAccount user1 = new UserAccount();
@@ -75,14 +75,19 @@ public class IdeaIntegrationTest {
     	comment.setCurrentDate();
 
     	idea.addComment(comment);
-    	idea.setCurrentDate();
-    	idea.setTitle("title");
+    	if (i == 3){
+    		idea.setDateCreated("other date");;
+    	}
+    	idea.setTitle("title" + i);
     	Like like = new Like();
     	like.setUserAccount(user1);
 
     	Like like1 = new Like();
     	like1.setUserAccount(user1);
-    	idea.addLikes(like1);
+    	if(i != 3){
+    		idea.addLikes(like1);
+    	}
+    	
     	
     	this.ideaRepository.save(idea);
     	
@@ -90,6 +95,36 @@ public class IdeaIntegrationTest {
     	
     }
     
+    
+    @Test
+    public void testLike(){
+    	
+    	mockIdea(1);
+    	mockIdea(2);
+    	mockIdea(4);
+    	
+    	UserAccount user1 = new UserAccount();
+    	user1.setName("user1");
+    	user1.setEmail("user1@test.com");
+    	user1.setCurrentDate();
+    	
+		Like like = new Like();
+		like.setUserAccount(user1);
+		
+		System.out.println(this.ideaRepository.findByLikes(like).size());
+		
+    }
+    
+    @Test
+    public void getLatestIdeas(){
+    	mockIdea(1);
+    	mockIdea(2);
+    	mockIdea(3);
+    	mockIdea(4);
+    	//System.out.println(this.ideaRepository.findAllSortByDateCreated());
+    	
+    	//this.ideaRepository.findAll().
+    }
     
     
     @After
