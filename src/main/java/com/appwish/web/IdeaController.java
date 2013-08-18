@@ -41,30 +41,30 @@ public class IdeaController {
 			idea.setBody("Some awesome description");
 			idea.setUserAccount(user1);
 			idea.addComment(comment);
+			idea.setCurrentDate();
 			if (i == 7){
 				idea.addComment(comment1);
 			}
 			idea.addLikes(like1);
-			
+
 			this.ideaRepository.save(idea);
-	
+
 		}
-		
-		
-		
+
+
+
 	}
-	
+
 	@RequestMapping(value="getuserideas", method=RequestMethod.GET)
 	public void getUserIdeas(@ModelAttribute UserAccount userAccount){
 		this.ideaRepository.findByUserAccount(userAccount);
-		
+
 	}
-	
+
 	@RequestMapping(value="getlikedideas", method=RequestMethod.GET)
 	public void getLikedIdeas(UserAccount userAccount){
 		Like like = new Like();
 		like.setUserAccount(userAccount);
 		this.ideaRepository.findByLikes(like);
 	}
-	
 }
