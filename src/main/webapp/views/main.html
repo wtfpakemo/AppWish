@@ -1,0 +1,38 @@
+<div class="masthead">
+    <ul class="nav nav-pills pull-right">
+        <li class="active"><a href="#">Welcome! User 1</a></li>
+        <li><a href="#">Logout</a></li>
+        <li><a href="#">About</a></li>
+     </ul>
+    <h3 class="muted">Project name</h3>
+</div>
+<div class="well">
+	<form name="create-idea-frm">
+	  <fieldset>   
+	    <div class="control-group">
+		    <label><h3>Have an ideal app?</h3></label>
+		    <input type="text" placeholder="Name of your Ideal App" class="input-block-level">
+		    <span class="help-block">Please provide a name for your ideal app.</span>
+		</div>
+		<div class="control-group">
+		    <label><h4>Tell us more.</h4></label>
+		    <textarea rows="3" placeholder="What problem will it solve?" class="input-block-level"></textarea>
+		    <span class="help-block">Please provide more details.</span>
+		</div>
+	    <button type="submit" class="btn">Submit</button>
+	  </fieldset>
+	</form>
+</div>
+
+<div id="fresh-ideas">
+	<legend><h3>Fresh ideas</h3></legend>
+	<div id="ideas">
+		<div class="idea" ng-repeat="idea in freshIdeas">	
+			<p class="title"> {{idea.title}} </p>
+			<p class="user"> {{idea.dateCreated}} | {{idea.user.name}} </p>
+			<p class="body"> {{idea.body}} </p>
+			<p class="comments"> comments: {{idea.comments.length}} </p>
+			<p class="likes"> likes: {{idea.likes.length}} </p>
+		</div>
+	</div>
+</div>
