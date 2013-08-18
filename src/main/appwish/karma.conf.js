@@ -8,6 +8,8 @@ files = [
   JASMINE,
   JASMINE_ADAPTER,
   'app/bower_components/angular/angular.js',
+  'app/bower_components/angular-ui/build/angular-ui.js',
+  'app/bower_components/angular-ui-bootstrap/angular-ui-bootstrap.js',
   'app/bower_components/angular-resource/angular-resource.js',
   'app/bower_components/angular-mocks/angular-mocks.js',
   'app/scripts/*.js',
@@ -24,7 +26,7 @@ exclude = [];
 reporters = ['progress'];
 
 // web server port
-port = 8080;
+port = 9080;
 
 // cli runner port
 runnerPort = 9100;

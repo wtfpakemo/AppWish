@@ -30,3 +30,30 @@ body {
     line-height: 1;
     letter-spacing: -1px;
 }
+
+#ideas .controls {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#ideas .body {
+    border-bottom: 1px dotted silver !important;
+    padding: 10px;
+}
+
+#top-ideas {
+    border: 1px solid silver;
+    border-radius: 4px;
+    padding: 25px;
+    padding-top: 0px;
+    margin-left: 45px;
+}
+
+#create-idea {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+#comments .comment .user {
+    font-size: 12px;
+}

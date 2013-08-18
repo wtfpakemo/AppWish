@@ -1,42 +1,93 @@
-<div class="masthead">
-    <ul class="nav nav-pills pull-right">
-        <li class="active"><a href="#">Welcome! User 1</a></li>
-        <li><a href="#">Logout</a></li>
-        <li><a href="#">About</a></li>
-     </ul>
-    <h3 class="muted">Project name</h3>
-</div>
-<div class="well">
-	<form name="create-idea-frm">
+
+<div id="create-idea" class="well">
+	<form name="create-idea-frm" novalidate>
 	  <fieldset>   
 	    <div class="control-group">
 		    <label><h3>Have an ideal app?</h3></label>
 		    <input type="text" placeholder="Name of your Ideal App" 
-		    		class="input-block-level">
+		    		class="input-block-level" ng-model="idea.title">
 		    <span class="help-block">Please provide a name for your ideal app.</span>
 		</div>
 		<div class="control-group">
 		    <label><h4>Tell us more.</h4></label>
 		    <textarea rows="3" placeholder="What problem will it solve?"
-		    			class="input-block-level"></textarea>
+		    			class="input-block-level" ng-model="idea.body"></textarea>
 		    <span class="help-block">Please provide more details.</span>
 		</div>
-	    <button type="submit" class="btn">Submit</button>
+	    <button type="submit" class="btn" ng-click="validateSession()">Submit</button>
 	  </fieldset>
 	</form>
 </div>
 
-<div id="fresh-ideas">
-	<legend><h3>Fresh ideas</h3></legend>
-	<div id="ideas">
-		<div class="idea" ng-repeat="idea in freshIdeas">	
-			<p class="title"> {{idea.title}} </p>
-			<p class="user"> {{idea.dateCreated}} | {{idea.user.name}} </p>
-			<p class="body"> {{idea.body}} </p>
-			<p class="comments"> comments: {{idea.comments.length}} </p>
-			<p class="likes"> likes: {{idea.likes.length}} </p>
+<div class="row">
+
+	<div id="fresh-ideas" class="span6">
+		<legend><h3>Fresh ideas</h3></legend>
+		<div id="ideas">
+			<div class="idea" ng-repeat="idea in freshIdeas">	
+				<p class="title"> <h4>{{idea.title}} </h4> </p>
+				<p class="user small muted"> {{idea.dateCreated}} | {{idea.userAccount.name}} </p>
+				<p class="body"> {{idea.body}} 
+					...  <a class="btn btn-mini btn-info" href="/#/idea/{{idea.id}}"> Read More </a>
+				</p>
+
+				<div class="controls pull-left">
+					<span class="comments">
+						<i class="icon-comment"></i> 
+						{{idea.comments.length}} 
+					</span>
+					<span class="likes"> <i class="icon-thumbs-up"></i> 
+					 	{{idea.likes.length}} 
+					 </span>
+				</div>
+				<div class="controls pull-right">
+					<span class="comments">
+						<a class="btn btn-small"><i class="icon-comment"></i> Comment </a>			 
+					</span>
+					<span class="likes">
+						<a class="btn btn-small"><i class="icon-thumbs-up"></i> Like </a>
+					 </span>
+				</div>
+				<span class="clearfix"></span>
+				<hr/>
+			</div>
 		</div>
 	</div>
-</div>
+
+	<div id="top-ideas" class="span5">
+		<legend><h3>Hot ideas</h3></legend>
+		<div id="ideas">
+			<div class="idea" ng-repeat="idea in topIdeas">	
+				<p class="title"> <h4>{{idea.title}} </h4> </p>
+				<p class="user small muted"> {{idea.dateCreated}} | {{idea.user.name}} </p>
+				<p class="body"> {{idea.body}} 
+					...  <a class="btn btn-mini btn-info" href="/#/idea/{{idea.id}}"> Read More </a>
+				</p>
+
+
+				<div class="controls pull-left">
+					<span class="comments">
+						<i class="icon-comment"></i> 
+						{{idea.comments.length}} 
+					</span>
+					<span class="likes"> <i class="icon-thumbs-up"></i> 
+					 	{{idea.likes.length}} 
+					 </span>
+				</div>
+				<div class="controls pull-right">
+					<span class="comments">
+						<a class="btn btn-small"><i class="icon-comment"></i> Comment </a>			 
+					</span>
+					<span class="likes">
+						<a class="btn btn-small"><i class="icon-thumbs-up"></i> Like </a>
+					 </span>
+				</div>
+				<span class="clearfix"></span>
+				<hr/>
+			</div>
+		</div>
+	</div>
+
+<div>
 
 

@@ -1,40 +1,36 @@
 'use strict';
 
 angular.module('AppWishApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, idea, $dialog) {
 
-  	$scope.freshIdeas = [];
+  	$scope.freshIdeas = idea.query();
+  	$scope.topIdeas = idea.query();
 
-  	for(var i = 1; i < 6; i++) {
-
-	  	var idea = {
-	  		title : 'What a great idea ' + i,
-	  		user : { name : 'User ' + i, email : 'user@email.com' },
-	  		dateCreated : '12-12-2013',
-	  		comments : [{ user : { name : 'Commenter ' + i, email : 'commenter@email.com'},
-	  				   	 dateCreated: '12-13-2013',
-	  				   	 body : 'Some comment!'}],	  		
-	  		likes : [{ user : { name : 'Liker' + i, email : 'liker@email.com'}}],	  		
-	  		body : 'A very awesome description'
-	  	};
-
-	  	$scope.freshIdeas.push(idea);
-
-  	}
-
-  	
+  	$scope.idea = new idea();
+    $scope.submitIdea = function () {      
+      $scope.idea.$save();
+     }    
 
 
-  	/*
-  	Tobe! Deleted
-  	Scaffolded Sample =========================
-  	 */
+    //Login Form 
+    $scope.opts = {
+	    backdrop: true,
+	    keyboard: true,
+	    backdropClick: false,
+	    dialogFade: true,
+	    templateUrl: 'views/login.html',	
+	    controller: 'LoginCtrl'	   
+	};
 
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+	$scope.validateSession = function(){
+	    var d = $dialog.dialog($scope.opts);
+	    d.open().then(function(result){
+	      if(result)
+	      {
+	        alert('dialog closed with result: ' + result);
+	      }
+	    });
+	  };
 
-      
+        
   });

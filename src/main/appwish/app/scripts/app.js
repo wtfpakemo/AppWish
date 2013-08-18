@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('AppWishApp', ['ngResource'])
+angular.module('AppWishApp', ['ngResource','ui.bootstrap'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -11,9 +11,13 @@ angular.module('AppWishApp', ['ngResource'])
         templateUrl: 'views/testpage.html',
         controller: 'TestpageCtrl'
       })
-      .when('/idea', {
+      .when('/idea/:id', {
         templateUrl: 'views/idea.html',
         controller: 'IdeaCtrl'
+      })
+      .when('/user/:id', {
+        templateUrl: 'views/user.html',
+        controller: 'UserCtrl'
       })
       .otherwise({
         redirectTo: '/'

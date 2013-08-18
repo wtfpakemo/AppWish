@@ -1,14 +1,47 @@
-<h3>Idea</h3>
 <div class="idea">	
-	<p class="title"> {{idea.title}} </p>
-	<p class="user"> {{idea.dateCreated}} | {{idea.user.name}} </p>
-	<p class="body"> {{idea.body}} </p>
+	<p class="title"> <h3> {{idea.title}} </h3> </p>
+	<p class="user muted"> {{idea.dateCreated}} | {{idea.user.name}} </p>
+	<p class="body lead"> {{idea.body}} </p>
+
+	<div class="controls pull-left">
+		<span class="comments">
+			<i class="icon-comment"></i> 
+				{{idea.comments.length}} 
+		</span>
+		<span class="likes"> <i class="icon-thumbs-up"></i> 
+				{{idea.likes.length}} 
+		 </span>
+	</div>
+	<span class="clearfix"></span>
+	<hr/>
+	<legen><h4>Create comment</h4></legend>
+	<form name="create-comment-frm" class="well">		
+		<fieldset>   
+	    <div class="control-group">
+		    <label><h5>Email</h5></label>
+		    <input type="text" placeholder="Tell us your email" 
+		    		class="span6" ng-model="comment.user.email">
+		    <!--span class="help-block">Please provide a name for your ideal app.</span -->
+		</div>
+		<div class="control-group">
+		    <label><h5>Comment</h5></label>
+		    <textarea rows="3" placeholder="Have something to say?"
+		    			class="span6" ng-model="comment.body"></textarea>
+		    <!--span class="help-block">Please provide more details.</span -->
+		</div>
+	    <button type="submit" class="btn" ng-click="validateSession()">Submit</button>
+	  </fieldset>
+	</form>
+
+	<legend><h4>Community Thoughts</h4></legend>
 	<div id="comments">
+		
 		<div class="comment" ng-repeat="comment in idea.comments">
-			<p class="body">{{comment.body}}</p>
-			<p class="user">{{comment.dateCreated}} | {{comment.user.name}}</p>
+			<blockquote>
+				<p class="body">{{comment.body}}</p> <br/>
+				<p class="user muted">{{comment.dateCreated}} | {{comment.user.name}}</p>
+			</blockquote>
 		</div>			
 	</div>
-	<p class="comments"> {{idea.commentsCount}} </p>
-	<p class="likes"> {{idea.likesCount}} </p>
+	
 </div>

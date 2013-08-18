@@ -3,13 +3,13 @@
 describe('AppWishApp', function() {
 
     beforeEach(function() {
-        browser().navigateTo('/#/');
+        browser().navigateTo('/#/user/1');
     });
 
-    describe('Main Page', function() {
+    describe('User Page', function() {
 
         it('should display the correct route', function() {
-            expect(browser().location().path()).toBe('/');
+            expect(browser().location().path()).toBe('/user/1');
         });
 
         describe('Create Idea Form', function() {
@@ -19,16 +19,16 @@ describe('AppWishApp', function() {
         })
 
         describe('Idea List', function() {    
-            it('should have a list of fresh ideas', function(){
-                expect(repeater('#fresh-ideas .idea', 'Fresh Ideas').count()).toBeGreaterThan(1);                
+            it('should have a list of user created ideas', function(){
+                expect(repeater('#user-ideas .idea', 'User Ideas').count()).toBeGreaterThan(1);                
             });
 
-            it('should have a list of top ideas', function(){
-                expect(repeater('#top-ideas .idea', 'Top Ideas').count()).toBeGreaterThan(1);                
+            it('should have a list of liked ideas', function(){
+                expect(repeater('#liked-ideas .idea', 'Liked Ideas').count()).toBeGreaterThan(1);                
             });
 
 
-            ddescribe('Idea', function () {
+            describe('Idea', function () {
                 
                 it('should have a title', function () {
                    expect(element('.idea .title', 'Title').count()).toBeGreaterThan(0);  
